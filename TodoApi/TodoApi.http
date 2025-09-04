@@ -27,7 +27,6 @@ Accept: application/json
 
 ###
 
-
 ### PUI - Update an existing task
 PUT {{TodoApi_HostAddress}}/tasks/{{taskId}}
 Accept: application/json
