@@ -1,6 +1,50 @@
 @TodoApi_HostAddress = http://localhost:5128
+@taskId = 2
 
+### POST - Create a new task
+POST {{TodoApi_HostAddress}}/tasks/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Buy groceries",
+  "description": "Milk, eggs, bread",
+  "dueDate": "2025-09-10T12:00:00Z",
+  "isCompleted": false
+}
+
+###
+
+### Get all tasks
 GET {{TodoApi_HostAddress}}/tasks/
+Accept: application/json
+
+###
+
+### Get a task by id
+GET {{TodoApi_HostAddress}}/tasks/{{taskId}}
+Accept: application/json
+
+###
+
+
+### PUI - Update an existing task (replace)
+PUT {{TodoApi_HostAddress}}/tasks/{{taskId}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": {{taskId}},
+  "title": "Buy groceries and fruits",
+  "description": "Milk, eggs, bread, apples",
+  "dueDate": "2025-09-11T12:00:00Z",
+  "isCompleted": false
+}
+
+###
+
+### Delete a task
+DELETE {{TodoApi_HostAddress}}/tasks/{{taskId}}
 Accept: application/json
 
 ###
