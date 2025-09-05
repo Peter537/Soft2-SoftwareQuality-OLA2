@@ -15,12 +15,4 @@ public class TaskItem
     public TaskStatus Status { get; set; } = TaskStatus.CREATED;
 
     public TaskItem() { }
-
-    public TaskItem(int id, string title, string description, TaskStatus status)
-    {
-        Id = id;
-        Title = title;
-        Description = description;
-        Status = status;
-    }
 }
