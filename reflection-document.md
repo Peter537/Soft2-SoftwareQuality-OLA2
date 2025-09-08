@@ -15,3 +15,13 @@ Målet var mindst 80% coverage som acceptkriterium, men givet projektets begræn
 ![alt text](./img/code-coverage-3.png)
 
 ## Load testing
+
+Vi udførte belastningstests med Abstracta.JmeterDsl i C# for at simulere 50-100 samtidige brugere. Den basale test fokuserede på GET /tasks med 10 brugere (50 iterationer), hvilket resulterede i 1500 samples, gennemsnitlig responstid på 20 ms, throughput på 947 req/s og 0% fejl. Den blandede test med 100 brugere (5 iterationer) dækkede CRUD-operationer og gav 3000 samples, gennemsnit 78 ms (op til 156 ms for tungere requests som PUT/DELETE), throughput 2228 req/s og ingen fejl.
+
+![alt text](./img/load-testing-1.png)
+
+![alt text](./img/load-testing-2.png)
+
+Resultaterne viser, at API'et performer godt under moderat load: lave responstider, høj throughput og ingen fejl indikerer robusthed med in-memory database. Outliers (99% percentile op til 890 ms) tyder på sporadiske delays fra concurrency.
+
+For optimering kunne vi tilføje caching til GET for at reducere DB-adgang, bruge asynkrone metoder fuldt ud, eller skifte til en reel database med indeksering for bedre skalering. Ved højere load anbefales horisontal skalering eller load balancing for at holde responstider under 100 ms.
